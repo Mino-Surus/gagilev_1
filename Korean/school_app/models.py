@@ -46,7 +46,7 @@ class course(models.Model):
     def __str__(self): 
         return f"{self.name}" 
 
-class lessons(models.Model):
+class lesson(models.Model):
     title = models.CharField("Название", max_length=50)
     content = models.TextField("Содержание", max_length=20)
     date = models.DateField("Дата")
