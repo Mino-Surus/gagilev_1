@@ -60,11 +60,22 @@ class lessons(models.Model):
     def __str__(self): 
         return f"{self.title}"
 
+class lessons_list(models.Model):
+    enrollment_date = models.DateField("Список пройденных занятий")
+    lessons_id = models.ForeignKey(lessons, on_delete=models.CASCADE) 
+    student_id = models.ForeignKey(student, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = "Списки пройденных занятий"
+        verbose_name = "Список пройденных занятий"
+
+    def __str__(self): 
+        return f"{self.id}"
+
 class enrollments(models.Model):
     enrollment_date = models.DateField("Дата записи")
     course_id = models.ForeignKey(course, on_delete=models.CASCADE) 
     student_id = models.ForeignKey(student, on_delete=models.CASCADE)
-    progress = models.DecimalField("Процент прохождения курса", max_digits=5, decimal_places=2)
 
     class Meta:
         verbose_name_plural = "Записи на занятия"
